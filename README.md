@@ -50,4 +50,23 @@ For example:
 
 This will run the script every minute (not recommended). Ensure you specify the custom config directory as shown above.See PlexEmail for additional command line options, such as `-t` to run a test.
 
+## Compose
 
+An example of a `docker-compose.yml` file:
+
+```yml
+web:
+  build: .
+  container_name: plex_email
+  ports:
+    - "8383:80"
+  expose:
+    - "8383"
+    - "80"
+  restart: always
+  volumes:
+    - /opt/data/plexemail:/config
+    - /opt/data/plex/config:/plex
+```
+
+Obviously your volume mapping will vary.
